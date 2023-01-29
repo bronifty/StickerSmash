@@ -8,6 +8,7 @@ import CircleButton from "./components/CircleButton";
 import IconButton from "./components/IconButton";
 import EmojiPicker from "./components/EmojiPicker";
 import EmojiList from './components/EmojiList';
+import EmojiSticker from './components/EmojiSticker';
 
 const placeholderImageSource = require("./assets/british-shorthair-cat.jpg");
 
@@ -54,6 +55,8 @@ export default function App() {
           placeholderImageSource={placeholderImageSource}
           selectedImage={selectedImage}
         />
+        {pickedEmoji !== null ? <EmojiSticker imageSize={40} stickerSource={pickedEmoji} /> : null}
+
       </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
