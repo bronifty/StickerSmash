@@ -7,6 +7,7 @@ import * as ImagePicker from "expo-image-picker";
 import CircleButton from "./components/CircleButton";
 import IconButton from "./components/IconButton";
 import EmojiPicker from "./components/EmojiPicker";
+import EmojiList from './components/EmojiList';
 
 const placeholderImageSource = require("./assets/british-shorthair-cat.jpg");
 
@@ -14,6 +15,7 @@ export default function App() {
   const [selectedImage, setSelectedImage] = React.useState(null);
   const [showAppOptions, setShowAppOptions] = React.useState(false);
   const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const [pickedEmoji, setPickedEmoji] = React.useState(null);
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
@@ -72,7 +74,7 @@ export default function App() {
         <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
       </View> */}
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
-        {/* A list of emoji component will go here */}
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="auto" />
     </View>
