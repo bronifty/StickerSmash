@@ -7,8 +7,9 @@ import * as ImagePicker from "expo-image-picker";
 import CircleButton from "./components/CircleButton";
 import IconButton from "./components/IconButton";
 import EmojiPicker from "./components/EmojiPicker";
-import EmojiList from './components/EmojiList';
-import EmojiSticker from './components/EmojiSticker';
+import EmojiList from "./components/EmojiList";
+import EmojiSticker from "./components/EmojiSticker";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const placeholderImageSource = require("./assets/british-shorthair-cat.jpg");
 
@@ -49,14 +50,13 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageViewer
           placeholderImageSource={placeholderImageSource}
           selectedImage={selectedImage}
         />
         {pickedEmoji !== null ? <EmojiSticker imageSize={40} stickerSource={pickedEmoji} /> : null}
-
       </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
@@ -80,7 +80,7 @@ export default function App() {
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="auto" />
-    </View>
+    </GestureHandlerRootView>
   );
 }
 
