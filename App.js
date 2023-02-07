@@ -13,6 +13,10 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as MediaLibrary from 'expo-media-library';
 import { captureRef } from 'react-native-view-shot';
 import domtoimage from 'dom-to-image';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
+setTimeout(SplashScreen.hideAsync, 5000);
 
 
 const placeholderImageSource = require("./assets/british-shorthair-cat.jpg");
@@ -123,7 +127,7 @@ export default function App() {
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </GestureHandlerRootView>
   );
 }
