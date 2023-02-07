@@ -15,6 +15,8 @@ const AnimatedImage = Animated.createAnimatedComponent(Image);
 const AnimatedView = Animated.createAnimatedComponent(View);
 
 export default function EmojiSticker({ imageSize, stickerSource }) {
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
   const scaleImage = useSharedValue(imageSize);
   const onDoubleTap = useAnimatedGestureHandler({
     onActive: () => {
@@ -23,6 +25,7 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
       }
     },
   });
+  const onDrag = useAnimatedGestureHandler({
     onStart: (event, context) => {
       context.translateX = translateX.value;
       context.translateY = translateY.value;
